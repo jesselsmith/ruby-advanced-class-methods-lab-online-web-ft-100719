@@ -39,9 +39,17 @@ class Song
   def self.alphabetical
     self.all.sort_by{|song| song.name}
   end
-  def self.new_from_filename(file_name)
-    song_info  = file_name.split(/-|\.mp3/)
-    new_song = self.new_by_name(song_info[1].strip)
-    new_song.artist_name = song_info[0].strip
+  def self.get_song_info(file_name)
+    file_name.split(/-|\.mp3/).map{|info| info.strip}
   end
+  def self.new_from_filename(file_name)
+    song_info  = self.get_song_info(file_name)
+    new_song = self.new_by_name(song_info[1])
+    new_song.artist_name = song_info[0]
+  end
+  def self.create_from_filename(file_name)
+
+    new_song = create_by_name
+  end
+  
 end
