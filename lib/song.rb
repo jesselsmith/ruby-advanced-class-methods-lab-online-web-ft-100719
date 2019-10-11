@@ -33,8 +33,8 @@ class Song
     if existing_song
       existing_song
     else
-      self.create_by_name(name)  
-    end  
+      self.create_by_name(name)
+    end
   end
   def self.alphabetical
     self.all.sort_by{|song| song.name}
